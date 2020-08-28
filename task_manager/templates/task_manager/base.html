@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="{% static '/task_manager/css/style.css' %}">
+	<title> 
+		{% block title %} 
+		{% endblock title %}
+	</title>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="nav-wrap">
+				<ul class="nav-menu-left">
+					<li><a href=" {% url 'view_main' %}"> Home </a></li>
+					<li><a href=" {% url 'view_boards' %}"> Boards </a></li>
+					<li><a href=" {% url 'view_tasks' %}"> Task TMPL </a></li>
+				</ul>
+				<div class="header-logo">
+					Task Manager
+				</div>
+				<ul class="nav-menu-right">
+					<li><a href=""> SomePage </a></li>
+					<li><a href=""> SignUp </a></li>
+					<li><a href=""> Login </a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		{% block main %}
+		{% endblock main %}
+	</main>
+
+	<footer>
+		<div class="container">
+			<div class="footer-wrap">
+				<div class="footer-social">
+					Social media:
+					<div class="socials">
+						<a href=""> <img src="{% static '/task_manager/img/tg.svg' %}" height="30"> </a>
+						<a href=""> <img src="{% static '/task_manager/img/vk.svg' %}" height="30"> </a>
+						<a href=""> <img src="{% static '/task_manager/img/tw.svg' %}" height="30"> </a>
+						<a href=""> <img src="{% static '/task_manager/img/gh.svg' %}" height="30"> </a>
+					</div>
+				</div>
+					<small> 
+						Some small copyright text :)
+					</small>
+			</div>
+		</div>
+	</footer>
+	{% block scripts %}	    
+	{% endblock scripts %}
+	<script src="{% static '/task_manager/js/scripts.js' %}" defer></script>
+</body>
+</html>

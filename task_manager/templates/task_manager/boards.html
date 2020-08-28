@@ -1,0 +1,28 @@
+{% extends "task_manager/base.html" %}
+
+
+{% block title %}
+
+{% endblock title %}
+
+{% block main %}
+	<div class="container">
+		<div class="boards-container">
+			<div class="boards-title">
+				<h1> Here you can see the list of your task-boards:</h1>
+			</div>
+			<table class="tasks-table">
+				<tr class="tr-h"><th>Board name</th><th>Number of tasks</th><th>Last change</th><th>Date of creation</th></tr>
+				<tr class="tr-n"><td> <a href="taskboard.html"> Some name</a></td><td>12</td><td>27. Aug 2020 02:24</td><td>27. Aug 2020 12:42</td></tr>
+				<tr class="tr-n"><td> <a href="taskboard.html"> Some name</a></td><td>22</td><td>27. Aug 2020 02:24</td><td>27. Aug 2020 12:43</td></tr>
+				<tr class="tr-n"><td> <a href="taskboard.html"> Some name</a></td><td>32</td><td>27. Aug 2020 02:24</td><td>27. Aug 2020 12:44</td></tr>
+				<tr class="tr-n"><td> <a href="taskboard.html"> Some name</a></td><td>43</td><td>27. Aug 2020 02:24</td><td>27. Aug 2020 12:47</td></tr>
+			</table>
+		</div>
+	</div>
+{% endblock main %}
+
+{% block scripts %}
+    
+{% endblock scripts %}
+
