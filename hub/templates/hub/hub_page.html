@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<div class="block-left" style="display: inline-block; float: left; margin: 20px 50px;">
+{% extends "base.html" %}
+
+{% block title %}
+    Welocom to HUB
+{% endblock title %}
+
+{% block content %}
+	<div class="block-left">
 		<h3>Ниже представлены примеры моих учебных проектов:</h1>
 		<ul>
 			<li><a href="{% url 'view_main' %}">Task Manager</a></li>
@@ -12,14 +13,16 @@
 			<li><a href="">alalalala</a></li>
 		</ul>
 	</div>
-	<div class="block-right" style="display: inline-block; float: right; margin: 20px 50px;">
+	<div class="block-right">
 		<h3>Информация по ресурсам:</h1>
 		<ul>
-			<li>Info 1</li>
+			<li>
+				<p>Users for testing:</p>
+				<p>test_user_01 - testpass01</p>
+				<p>test_user_02 - testpass02</p>
+			</li>
 			<li>Info 2</li>
 			<li>Info 3</li>
 		</ul>
 	</div>
-	
-</body>
-</html>
+{% endblock content %}
