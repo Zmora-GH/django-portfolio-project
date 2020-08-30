@@ -1,10 +1,22 @@
-{% extends 'base.html' %}
+{% extends 'index.html' %}
+
+{% load widget_tweaks %}
 
 {% block title %} Sign in {% endblock %}
-{% block content %}
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p}}
-            </form>
 
+{% block main %}
+	<form method="post" class="au-form">
+		{% csrf_token %}
+		<div class="au-group">
+			<label>Username</label><br>
+			{% render_field form.username class="au-input" %}	
+		</div>
+		<div class="au-group">
+			<label>Password</label><br>
+			{% render_field form.password class="au-input" %}	
+		</div>
+		<div class="au-group">
+			<button type="submit" class="btn">Login</button>
+		</div>
+	</form>
 {% endblock %}

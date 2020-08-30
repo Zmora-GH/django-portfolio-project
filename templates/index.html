@@ -23,8 +23,13 @@
 					Task Manager
 				</div>
 				<ul class="nav-menu-right">
-					<li><a href=""> SignUp </a></li>
-					<li><a href=""> Login </a></li>
+					{% if  user.is_authenticated %}
+					    <li><a href="{% url 'password_change' %}"> Pass Change </a></li>
+						<li><a href="{% url 'logout_url'%}"> Logout </a></li>
+					{% else %}
+						<li><a href="{% url 'reg_user_url' %}"> SignUp </a></li>
+						<li><a href="{% url 'login_url'%}"> Login </a></li>    
+					{% endif %}
 				</ul>
 			</div>
 		</div>

@@ -98,7 +98,7 @@ footer {
 	border-radius: 5px;
 }
 
-.tb-btn {
+.tb-btn, .btn {
 	color: #2c3e50;
 	font-weight: bold;
 	border: none;
@@ -324,3 +324,30 @@ form {
 	background-color: rgba(255,255,255,0.1);
 	cursor: pointer;
 }
+
+.au-form {
+	margin: 0 auto;
+	color: #ecf0f1;
+	background-color: rgba(255,255,255,0.1);
+	height: auto;
+	width: auto;
+	padding: 25px 10px;
+
+}
+.au-group {
+	text-align: center;
+	margin: 10px 0;
+} 
+.au-input {
+	font-family: 'Ubuntu', sans-serif;
+	line-height: 28px;
+	font-size: 17px;
+	background-color: #ecf0f1;
+	color: #3498db;
+	border-radius: 5px;
+	padding: 0px 10px;
+	border: none;
+	border-bottom: 2px solid #3498db;
+	margin: 0 auto;
+}
+

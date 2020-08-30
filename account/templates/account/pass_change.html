@@ -1,11 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'index.html' %}
 
 {% block title %} Password Change {% endblock %}
 
-{% block content %}
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                </form>
-
+{% block main %}
+	<form method="post" class="au-form">
+		{% csrf_token %}
+		{{ form.as_ul }}
+		<div class="au-group">
+			<button type="reset" class="btn">Reset</button>
+			<button type="submit" class="btn">Register Now</button>
+		</div>
+	</form>
 {% endblock %}
