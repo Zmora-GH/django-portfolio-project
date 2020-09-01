@@ -114,13 +114,16 @@ function task_manipulation() {
 
 
 
-function form_manage(clsstr) {
+function form_manage(clsstr, m=0) {
 	var temp = document.querySelector('.'+clsstr);
-	if (temp.classList.contains('hide')) {
-		temp.classList.remove('hide');
-	} else {
+	if (!document.querySelectorAll('.disabled').length) {
+		if (temp.classList.contains('hide')) {
+			temp.classList.remove('hide');
+		};	
+	};
+	if (m) {
 		temp.classList.add('hide');
-	}
+	};
 };
 
 

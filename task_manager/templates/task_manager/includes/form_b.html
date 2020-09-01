@@ -1,0 +1,34 @@
+{% load widget_tweaks %}
+
+<div class="form-wrap hide">
+	<form method="post" class="board-form">
+		{% csrf_token %}
+		<div class="au-group">
+			<label>Board name:</label><br>
+			{% render_field form.name class="au-input" %}	
+		</div>
+		<div class="au-group">
+			<button type="submit" class="btn">Create</button>
+			<button type="reset" class="btn">Reset</button>
+			<button type="button" class="btn" onclick="form_manage('form-wrap', 1)"> Close</button>
+		</div>
+	</form>
+</div>
+<!-- <div>			
+			<label>ASD: </label>
+			<input class="cf-input" type="text" name="gg">
+		</div>
+		<div>
+			<label>WAD: </label>
+			<select class="cf-input"> 
+				<option>Пункт 1</option>
+				<option>Пункт 2</option>
+				<option>Пункт 2</option>
+				<option>Пункт 2</option>
+			</select>
+		</div>
+		<div>
+			<input class="cf-input-button" type="submit" name="hh" value="Submit">
+			<input class="cf-input-button" type="reset" name="bb" value="Reset">
+			<button class="cf-input-button" type="button" onclick="form_manage('form-wrap', 1)"> Close</button>
+		</div> -->

@@ -6,12 +6,6 @@ class TaskInline(admin.TabularInline):
     model = Task
 
 
-class TaskPanel(admin.ModelAdmin):
-	list_display = ['title', 'last_change', 'pub_date']
-	list_display_links = ['title']
-	search_fields = ['title']
-
-
 class BoardPanel(admin.ModelAdmin):
 	list_display = ['name', 'user', 'last_change', 'pub_date']
 	list_display_links = ['name']
@@ -20,5 +14,4 @@ class BoardPanel(admin.ModelAdmin):
 
 
 admin.site.register(TaskBoard, BoardPanel)
-admin.site.register(Task, TaskPanel)
 

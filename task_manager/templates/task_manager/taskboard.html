@@ -6,113 +6,26 @@
 
 {% block main %}
 	{% include 'task_manager/includes/task_toolbar.html' %}
-	<div class="form-wrap hide">
-		<form class="task-form" method="post">
-			<div>			
-				<label>ASD: </label>
-				<input class="cf-input" type="text" name="gg">
-			</div>
-			<div>
-				<label>WAD: </label>
-				<select class="cf-input"> 
-					<option>Пункт 1</option>
-					<option>Пункт 2</option>
-					<option>Пункт 2</option>
-					<option>Пункт 2</option>
-				</select>
-			</div>
-			<div>
-				<input class="cf-input-button" type="submit" name="hh" value="Submit">
-				<input class="cf-input-button" type="reset" name="bb" value="Reset">
-				<button class="cf-input-button" type="button" onclick="form_manage('form-wrap')"> Close</button>
-			</div>
-		</form>
-	</div>
+	{% include 'task_manager/includes/form_t.html' %}
 	<div class="tasks-container">
 		<div class="tasks js-tasks" wrap="off">
-
-			<div class="btns-wrap hide  js-btns-wrap-sc">
-				<div class="btns-panel">
-					<form method="post">
-						<input class="btn btn-save js-btn-save" type="button" value="Save">
-						<input class="btn btn-cancel js-btn-cancel" type="button" value="Cancel">
-					</form>
-				</div>				
-			</div>
-
-			<div class="btns-wrap hide  js-btns-wrap-d">
-				<div class="btns-panel">
-					<form method="post">
-						<input class="btn btn-cancel js-btn-delete" type="button" value="Delete">
-						<input class="btn btn-save js-btn-cancel" type="button" value="Cancel">
-					</form>
-				</div>				
-			</div>
-
-
-
-			<div class="colmn js-col" data-column-id="11111111">
-				<div class="col-title"> <span> Title 1 </span> </div>
-
+		{% for stage in stages %}
+			<div class="colmn js-col" data-column-id="{{stage.0}}">
+				<div class="col-title"> <span> {{stage.1}} </span> </div>
 				<div class="col-tasks js-inner">
-
-					<div class="card1 js-card 11"  draggable="true" data-task-id="c1">
-						<div class="card1-title"> <span> Some title! dasdasdasdasdasdasdas</span> </div>
-						<div class="card1-body"> <span> 11 Some task body! </span> </div>
-					</div>
-
-					<div class="card1 js-card 22"  draggable="true" data-task-id="c2">
-						<div class="secret-wrap"></div>
-						<div class="card1-title"> <span> Some title! </span> </div>
-						<div class="card1-body"> 
-							<span>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco.
-							</span> 
-						</div>
-					</div>	
-
+					{% for task in tasks %}
+						{% if  task.stage == stage.0%}
+							<div class="card1 js-card"  draggable="true" data-task-id="{{task.id}}">
+								<div class="secret-wrap"></div>
+								<div class="card1-title"> <span> {{task.title}} </span> </div>
+								<div class="card1-body"> <span> {{task.body}} </span> </div>
+							</div>
+						{% endif %}
+					{% endfor %}
 				</div>
 				<div class="card-empty js-empty hide"> </div>
 			</div>
-
-			<div class="colmn js-col" data-column-id="111111121">
-				<div class="col-title"> <span> Title 1 </span> </div>
-
-				<div class="col-tasks js-inner">
-
-					<div class="card1 js-card 11"  draggable="true" data-task-id="c12">
-						<div class="card1-title"> <span> Some title! dasdasdasdasdasdasdas</span> </div>
-						<div class="card1-body"> <span> 112 Some task body! </span> </div>
-					</div>
-
-					<div class="card1 js-card 22"  draggable="true" data-task-id="c22">
-						<div class="secret-wrap"></div>
-						<div class="card1-title"> <span> Some title! </span> </div>
-						<div class="card1-body"> 
-							<span>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco.
-							</span> 
-						</div>
-					</div>
-					<div class="card1 js-card 22"  draggable="true" data-task-id="c222">
-						<div class="secret-wrap"></div>
-						<div class="card1-title"> <span> Some title! </span> </div>
-						<div class="card1-body"> 
-							<span>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco.
-							</span> 
-						</div>
-					</div>	
-
-				</div>
-				<div class="card-empty js-empty hide"> </div>
-			</div>
+		{% endfor %}
 		</div>
 	</div>
 {% endblock main %}

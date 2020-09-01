@@ -5,18 +5,30 @@
 {% endblock title %}
 
 {% block main %}
+	{% include 'task_manager/includes/form_b.html' %}
 	<div class="container">
 		<div class="boards-container">
 			<div class="boards-title">
 				<h1> Here you can see the list of your task-boards:</h1>
 			</div>
-			<table class="tasks-table">
-				<tr class="tr-h"><th>Board name</th><th>Number of tasks</th><th>Last change</th><th>Date of creation</th></tr>
-				<tr class="tr-n"><td> <a href=" {% url 'view_tasks' %}"> Some name</a></td><td>12</td><td>27. Aug 2020 02:24</td><td>27. Aug 2020 12:42</td></tr>
-				<tr class="tr-n"><td> <a href=" {% url 'view_tasks' %}"> Some name</a></td><td>22</td><td>27. Aug 2020 02:24</td><td>27. Aug 2020 12:43</td></tr>
-				<tr class="tr-n"><td> <a href=" {% url 'view_tasks' %}"> Some name</a></td><td>32</td><td>27. Aug 2020 02:24</td><td>27. Aug 2020 12:44</td></tr>
-				<tr class="tr-n"><td> <a href=" {% url 'view_tasks' %}"> Some name</a></td><td>43</td><td>27. Aug 2020 02:24</td><td>27. Aug 2020 12:47</td></tr>
-			</table>
+			{% if board_count %}
+				<table class="tasks-table">
+					<tr class="tr-h">
+						<th>Board name</th><th>Number of tasks</th><th>Last change</th><th>Date of creation</th>
+					</tr>
+					{% for board in boards %}
+						<tr class="tr-n">
+							<td> <a href=" {% url 'view_tasks' board_id=board.id %}"> {{ board.name }}</a></td>
+							<td>{{ board.task_count}}</td>
+							<td>{{ board.last_change }}</td>
+							<td>{{ board.pub_date }}</td>
+						</tr>
+					{% endfor %}
+				</table>
+			{% endif %}
+			<div style="text-align: center;">	
+				<button onclick="form_manage('form-wrap')" class="tb-btn js-tb-btn"> Create </button>
+			</div>
 		</div>
 	</div>
 {% endblock main %}

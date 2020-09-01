@@ -1,10 +1,12 @@
 {% extends 'index.html' %}
+
 {% block title %} Log out {% endblock %}
-{% block content %}
-    <div class="some_layout" style=" padding-top: 250px; padding-bottom: 250px;">
-        <div style="text-align: center;">
-            <p> You are logged out!</p>
-            <a  href="{% url 'login_url' %}">Log in again</a>
-        </div>
-    </div>
+
+{% block main %}
+	<div style=" padding-top: 200px; padding-bottom: 200px;">
+		<div style="text-align: center;">
+			<h2>You are logged out!</h2>
+			<a style="text-decoration: none; color: white;" href="{% url 'login_url' %}">Log in again</a>
+		</div>
+	</div>
 {% endblock %}
