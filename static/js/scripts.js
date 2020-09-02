@@ -9,6 +9,7 @@ function task_select(e) {
 	document.querySelectorAll('.js-tb-btnd').forEach( (btn) => {
 		btn.classList.remove('hide');
 	});
+	form_determ(this.dataset.taskId);
 };
 
 function task_unselect(e) {
@@ -38,13 +39,6 @@ function create_request() {
 	return JSON.stringify(data)
 };
 
-
-function create_object(buff) {
-	let str = buff;
-	let temp = document.createElement('div');
-	temp.innerHTML = str;
-	return temp.firstChild;
-};
 
 function drag_strat(e) {
 	setTimeout(() => {this.classList.add('hide')}, 0);
@@ -96,6 +90,12 @@ function task_manipulation() {
 	
 };
 
+function form_determ(id) {
+	var forms = document.querySelectorAll('.js-form-det')
+	forms.forEach( (form) => {
+		form.querySelector('.js-h-inp').value = id;
+	});
+}
 
 
 
@@ -108,37 +108,8 @@ function form_manage(clsstr) {
 		temp.classList.add('hide');
 	}
 }
-// function form_manage(clsstr, m=0) {
-// 	var temp = document.querySelector('.'+clsstr);
-// 	if (!document.querySelectorAll('.disabled').length) {
-// 		if (temp.classList.contains('hide')) {
-// 			temp.classList.remove('hide');
-// 		};	
-// 	};
-// 	if (m) {
-// 		temp.classList.add('hide');
-// 	};
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 task_manipulation();
+
 
 

@@ -53,7 +53,7 @@ class TasksView(View, LoginRequiredMixin):
 			'tasks': tasks,
 			'stages': stages,
 			'form_n': form_n,
-			'form_e': form_e,
+			'form_e': form_e, 		################################# ?
 			'form_d': form_d,
 		} 
 		return render(request, 'task_manager/taskboard.html', context=context)
@@ -63,21 +63,27 @@ class TasksView(View, LoginRequiredMixin):
 		if request.POST['opcode'] == '2':
 			x_form = TaskForm(request.POST)
 			if x_form.is_valid():
-				new_task = x_form.save()
+				Task.objects.create(
+					title=x_form.cleaned_data.get('title'),
+					body=x_form.cleaned_data.get('body'),
+					stage=x_form.cleaned_data.get('stage'),
+					board=TaskBoard(id=board_id))
 				return redirect('view_tasks', board_id=board_id)
+
 		elif request.POST['opcode'] == '1':
 			x_form = TaskForm(request.POST)
 			if x_form.is_valid():
-				task = Task.objects.get(id=int(request.POST['id']))
-				task.title = x_form.cleaned_data.get('title')
-				task.body = x_form.cleaned_data.get('body')
-				task.stage = x_form.cleaned_data.get('stage')
-				task.save() 
+				Task.objects.filter(id=int(request.POST['id'])).update(
+					title=x_form.cleaned_data.get('title'),
+					body=x_form.cleaned_data.get('body'),
+					stage=x_form.cleaned_data.get('stage'),
+					board=TaskBoard(id=board_id))
 				return redirect('view_tasks', board_id=board_id)
+
 		elif request.POST['opcode'] == '0':
 			Task.objects.get(id=int(request.POST['id'])).delete()
 			return redirect('view_tasks', board_id=board_id)
+
 		else:
 			return HttpResponseBadRequest('Oops! This opcode is wrong!')
-		return redirect('view_tasks', board_id=board_id)
 
