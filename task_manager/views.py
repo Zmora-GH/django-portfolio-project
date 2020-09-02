@@ -1,16 +1,26 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseBadRequest
+from django.http import HttpResponseBadRequest, HttpResponse, JsonResponse
 
 from .models import TaskBoard, Task
 from .forms import TaskForm, BoardForm
+import json
 
 
 def view_main(request):
 	""" """
 	context = {}
 	return render(request,'task_manager/main_page.html', context=context)
+
+
+def drop_task(request):
+	""" """
+	data = json.loads(request.body)
+	task = Task.objects.get(id=data['id'])
+	task.stage = data['stage']
+	task.save()
+	return JsonResponse({'status': 200})
 
 
 class BoardsView(View, LoginRequiredMixin):
@@ -46,15 +56,11 @@ class TasksView(View, LoginRequiredMixin):
 		""" """
 		tasks = Task.objects.filter(board=board_id)
 		stages = Task.STAGE_CHOICE
-		form_n = TaskForm()
-		form_e = TaskForm()
-		form_d = TaskForm()
+		form = TaskForm()
 		context = {
 			'tasks': tasks,
 			'stages': stages,
-			'form_n': form_n,
-			'form_e': form_e, 		################################# ?
-			'form_d': form_d,
+			'form': form,
 		} 
 		return render(request, 'task_manager/taskboard.html', context=context)
 
@@ -67,6 +73,7 @@ class TasksView(View, LoginRequiredMixin):
 					title=x_form.cleaned_data.get('title'),
 					body=x_form.cleaned_data.get('body'),
 					stage=x_form.cleaned_data.get('stage'),
+					bg=x_form.cleaned_data.get('bg'),
 					board=TaskBoard(id=board_id))
 				return redirect('view_tasks', board_id=board_id)
 
@@ -77,6 +84,7 @@ class TasksView(View, LoginRequiredMixin):
 					title=x_form.cleaned_data.get('title'),
 					body=x_form.cleaned_data.get('body'),
 					stage=x_form.cleaned_data.get('stage'),
+					bg=x_form.cleaned_data.get('bg'),
 					board=TaskBoard(id=board_id))
 				return redirect('view_tasks', board_id=board_id)
 

@@ -8,16 +8,16 @@
 	{% include 'task_manager/includes/task_toolbar.html' %}
 	{% include 'task_manager/includes/form_t.html' %}
 	<div class="tasks-container">
-		<div class="tasks js-tasks" wrap="off">
+		<div class="tasks js-tasks" data-drop-url="{% url 'view_drop' %}">
+			<form id="jshf" style="display: none;">{% csrf_token %}</form>
 		{% for stage in stages %}
 			<div class="colmn js-col" data-column-id="{{stage.0}}">
 				<div class="col-title"> <span> {{stage.1}} </span> </div>
 				<div class="col-tasks js-inner">
 					{% for task in tasks %}
 						{% if  task.stage == stage.0%}
-							<div class="card1 js-card"  draggable="true" data-task-id="{{task.id}}">
-								<div class="secret-wrap"></div>
-								<div class="card1-title"> <span> {{task.title}} </span> </div>
+							<div class="card1 js-card"  draggable="true" data-task-id="{{task.id}}" data-task-stage="{{task.stage}}" data-task-title="{{task.title}}" data-task-body="{{task.body}}" data-task-color="{{task.bg}}">
+								<div class="card1-title {{task.bg}}"> <span> {{task.title}} </span> </div>
 								<div class="card1-body"> <span> {{task.body}} </span> </div>
 							</div>
 						{% endif %}

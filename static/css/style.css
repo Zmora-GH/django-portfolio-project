@@ -25,6 +25,11 @@ main {
 footer {
 	margin-top: 15px;
 }
+textarea {
+	height: 100px;
+	width: 280px;
+	resize: none;
+}
 .socials {
 	display: inline-block;
 }
@@ -152,21 +157,17 @@ footer {
 
 }
 .card1-title {
-	background-color: #e74c3c;
-	background-color: #2ecc71;
-	background-color: #f1c40f;
-	background-color: #9b59b6;
-	background-color: #3498db;
-
-
 	height: 30px;
 	text-align: center;
 	font-weight: bold;
 	line-height: 30px;
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
-
 }
+.bg1 { background-color: #e74c3c; } .bg2 { background-color: #2ecc71; }
+.bg3 { background-color: #f1c40f; } .bg4 { background-color: #9b59b6; }
+.bg5 { background-color: #3498db }
+
 .card1-body {
 	padding: 0 5px;
 }

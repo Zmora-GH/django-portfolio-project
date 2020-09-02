@@ -7,15 +7,19 @@
 		<input type="hidden" name="opcode" value="2">
 		<div class="au-group">
 			<label>Title:</label><br>
-			{% render_field form_n.title class="au-input" %}	
+			{% render_field form.title class="au-input" %}	
 		</div>
 		<div class="au-group">
 			<label>Body:</label><br>
-			{% render_field form_n.body class="au-input" %}	
+			{% render_field form.body class="au-input" %}	
 		</div>
 		<div class="au-group">
 			<label>Stage:</label><br>
-			{% render_field form_n.stage class="au-input" %}	
+			{% render_field form.stage class="au-input" %}	
+		</div>
+		<div class="au-group">
+			<label>Color:</label><br>
+			{% render_field form.bg class="au-input" %}	
 		</div>
 		<div class="au-group">
 			<button type="submit" class="btn">Create</button>
@@ -25,22 +29,26 @@
 	</form>
 </div>
 <div class="form-wrap-e hide">
-	<form method="post" class="board-form js-form-det">
+	<form method="post" class="board-form js-form-det jsfe">
 		{% csrf_token %}
 		<p>Edit form</p>
 		<input type="hidden" name="id" value="0" class="js-h-inp">
 		<input type="hidden" name="opcode" value="1">
 		<div class="au-group">
 			<label>Title:</label><br>
-			{% render_field form_e.title class="au-input" %}	
+			{% render_field form.title class="au-input" %}	
 		</div>
 		<div class="au-group">
 			<label>Body:</label><br>
-			{% render_field form_e.body class="au-input" %}	
+			{% render_field form.body class="au-input" %}	
 		</div>
 		<div class="au-group">
 			<label>Stage:</label><br>
-			{% render_field form_e.stage class="au-input" %}	
+			{% render_field form.stage class="au-input" %}	
+		</div>
+		<div class="au-group">
+			<label>Color:</label><br>
+			{% render_field form.bg class="au-input" %}	
 		</div>
 		<div class="au-group">
 			<button type="submit" class="btn">Save</button>
@@ -50,7 +58,7 @@
 	</form>
 </div>
 <div class="form-wrap-d hide">
-	<form method="post" class="board-form js-form-det">
+	<form method="post" class="board-form js-form-det jsfd">
 		{% csrf_token %}
 		<p>Are you sure?</p>
 		<input type="hidden" name="id" value="22" class="js-h-inp">

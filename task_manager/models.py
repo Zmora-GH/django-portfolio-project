@@ -20,14 +20,21 @@ class TaskBoard(models.Model):
 
 
 class Task(models.Model):
-	STAGE_CHOICE= (
+	STAGE_CHOICE = (
 		(1, 'Idea'),
 		(2, 'Task'),
 		(3, 'In Progress'),
 		(4, 'Comleted'))
+	COLOR_CHOICE = (
+		('bg1', 'Red'),
+		('bg2', 'Green'),
+		('bg3', 'Orange'),
+		('bg4', 'Lilac'),
+		('bg5', 'Blue'),)
 	title = models.CharField(max_length=32)
 	body = models.CharField(max_length=185)
 	stage = models.IntegerField(choices=STAGE_CHOICE, default=1)
+	bg = models.CharField(max_length=3, choices=COLOR_CHOICE, default='bg5')
 	pub_date = models.DateTimeField(auto_now_add=True)
 	last_change = models.DateTimeField(auto_now=True)
 	board = models.ForeignKey(TaskBoard, on_delete=models.CASCADE,

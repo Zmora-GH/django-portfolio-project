@@ -10,6 +10,7 @@ function task_select(e) {
 		btn.classList.remove('hide');
 	});
 	form_determ(this.dataset.taskId);
+	edit_placehold(this);
 };
 
 function task_unselect(e) {
@@ -23,22 +24,6 @@ function task_unselect(e) {
 		};
 	};
 };
-
-
-function create_request() {
-	let data = {};
-	let cols = document.querySelectorAll('.js-col');
-	cols.forEach( (col) => {
-		let task_list = [];
-		let cards = col.querySelectorAll('.js-card');
-		cards.forEach( (card) => {
-			task_list.push(card.dataset.taskId)
-		});
-		data[col.dataset.columnId] = task_list;
-	});
-	return JSON.stringify(data)
-};
-
 
 function drag_strat(e) {
 	setTimeout(() => {this.classList.add('hide')}, 0);
@@ -63,6 +48,7 @@ function drop_e(e) {
 	var inner = parent_column.querySelector('.js-inner');
 	parent_column.classList.remove('hovered');	
 	inner.append(buffer_for_drag);
+	backend_drop(buffer_for_drag, parent_column);
 };
 
 function drag_leave(e) {
@@ -95,10 +81,15 @@ function form_determ(id) {
 	forms.forEach( (form) => {
 		form.querySelector('.js-h-inp').value = id;
 	});
-}
+};
 
-
-
+function edit_placehold(card) {
+	var form = document.querySelector('.jsfe');
+	form.querySelector('#id_title').value = card.dataset.taskTitle;
+	form.querySelector('#id_body').value = card.dataset.taskBody;
+	form.querySelector('#id_stage').value = card.dataset.taskStage;
+	form.querySelector('#id_bg').value = card.dataset.taskColor;
+};
 
 function form_manage(clsstr) {
 	var temp = document.querySelector('.'+clsstr);
@@ -107,7 +98,24 @@ function form_manage(clsstr) {
 	} else {
 		temp.classList.add('hide');
 	}
-}
+};
+
+function backend_drop(card, col) {
+	var request = new XMLHttpRequest();
+	var url = document.querySelector('.js-tasks').dataset.dropUrl
+	var token = document.querySelector('#jshf').querySelector('input').value;
+	let json = JSON.stringify({
+		id:card.dataset.taskId, 
+		stage:col.dataset.columnId,
+	});
+	request.open('post', url, true);
+	request.setRequestHeader('Content-Type', 'application/json');
+	request.setRequestHeader('HTTP_X_REQUESTED_WITH', 'XMLHttpRequest');
+	request.setRequestHeader('X-CSRFToken', token);
+	request.send(json);
+	console.log(request);
+};
+
 
 task_manipulation();
 
