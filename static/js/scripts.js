@@ -1,18 +1,5 @@
 var buffer_for_drag;
 
-/*
-function task_save_or_cancel(e) {
-	let wrap = document.querySelector('.js-btns-wrap-sc');
-	wrap.classList.remove('hide');
-	var sb = wrap.querySelector('.js-btn-save');
-	var cb = wrap.querySelector('.js-btn-cancel');
-	cb.onclick = () => { location.reload()};
-	sb.onclick = () => { 
-		wrap.classList.add('hide');
-	};
-
-};
-*/
 function task_select(e) {
 	var temp = document.querySelectorAll('.selected');
 	if(temp) {
@@ -20,14 +7,14 @@ function task_select(e) {
 	};
 	this.classList.add('selected');
 	document.querySelectorAll('.js-tb-btnd').forEach( (btn) => {
-		btn.classList.remove('disabled');
+		btn.classList.remove('hide');
 	});
 };
 
 function task_unselect(e) {
 	if(!e.target.classList.contains('js-card') && !e.target.closest('.js-card')) {
 		document.querySelectorAll('.js-tb-btnd').forEach( (btn) => {
-			btn.classList.add('disabled');
+			btn.classList.add('hide');
 		});
 		var temp = document.querySelectorAll('.selected');
 		if(temp) {
@@ -113,18 +100,25 @@ function task_manipulation() {
 
 
 
-
-function form_manage(clsstr, m=0) {
+function form_manage(clsstr) {
 	var temp = document.querySelector('.'+clsstr);
-	if (!document.querySelectorAll('.disabled').length) {
-		if (temp.classList.contains('hide')) {
-			temp.classList.remove('hide');
-		};	
-	};
-	if (m) {
+	if (temp.classList.contains('hide')) {
+		temp.classList.remove('hide');
+	} else {
 		temp.classList.add('hide');
-	};
-};
+	}
+}
+// function form_manage(clsstr, m=0) {
+// 	var temp = document.querySelector('.'+clsstr);
+// 	if (!document.querySelectorAll('.disabled').length) {
+// 		if (temp.classList.contains('hide')) {
+// 			temp.classList.remove('hide');
+// 		};	
+// 	};
+// 	if (m) {
+// 		temp.classList.add('hide');
+// 	};
+// };
 
 
 

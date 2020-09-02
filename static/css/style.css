@@ -51,6 +51,7 @@ footer {
 	font-weight: bolder;
 	border-bottom: 2px solid #3498db;
 }
+
 .nav-menu-left li{
 	text-decoration: none;
 	list-style: none;
@@ -70,8 +71,9 @@ footer {
 	border-radius: 6px;
 	background: rgb(41,128,185);
 	background: radial-gradient( rgba(41,128,185,1) 0%, rgba(52,73,94,1) 75%);
-	margin: 4px 0;
+	margin: 4px 0px;
 	padding: 0 10px;
+	padding-left: 40px;
 	text-shadow: 1px 1px 5px  black;
 
 }
@@ -192,13 +194,13 @@ footer {
 
 
 
-.form-wrap {
+.form-wrap, .form-wrap-n, .form-wrap-e, .form-wrap-d {
 	position: absolute;
 	z-index: 5;
 	top: 0;
 	left: 0;
 	right: 0;
-	bottom: 0;
+	bottom: -80px;
 	background-color: rgba(0,0,0,0.5);
 }
 
