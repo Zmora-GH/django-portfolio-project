@@ -14,6 +14,3 @@ def registration_view(request):
     context = {'form': form, }
     return render(request, 'account/register.html', context=context)
 
-def account_view(request):
-	context = {}
-	return render(request, 'account/account_page.html', context=context)

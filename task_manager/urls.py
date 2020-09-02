@@ -1,9 +1,9 @@
 
 from django.urls import path
-from .views import view_main, view_boards, view_tasks
+from .views import view_main, BoardsView, TasksView
 
 urlpatterns = [
     path('', view_main, name='view_main'),
-    path('boards/', view_boards, name='view_boards'),
-    path('taskboard/<int:board_id>', view_tasks, name='view_tasks'),
+    path('boards/', BoardsView.as_view(), name='view_boards'),
+    path('taskboard/<int:board_id>', TasksView.as_view(), name='view_tasks'),
 ]

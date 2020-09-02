@@ -1,9 +1,8 @@
 from django.contrib.auth import views
 from django.urls import path
-from .views import account_view, registration_view
+from .views import registration_view
 
 urlpatterns = [
-    path('', account_view, name='account_url'),
     path('registration/', registration_view, name='reg_user_url'),
 
     path('login/', 

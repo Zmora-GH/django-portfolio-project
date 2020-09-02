@@ -4,6 +4,7 @@
 	<form method="post" class="board-form">
 		{% csrf_token %}
 		<p>Create form</p>
+		<input type="hidden" name="opcode" value="2">
 		<div class="au-group">
 			<label>Title:</label><br>
 			{% render_field form_n.title class="au-input" %}	
@@ -27,6 +28,8 @@
 	<form method="post" class="board-form">
 		{% csrf_token %}
 		<p>Edit form</p>
+		<input type="hidden" name="id" value="DOVIT 4EREZ JS ">
+		<input type="hidden" name="opcode" value="1">
 		<div class="au-group">
 			<label>Title:</label><br>
 			{% render_field form_e.title class="au-input" %}	
@@ -50,6 +53,8 @@
 	<form method="post" class="board-form">
 		{% csrf_token %}
 		<p>Delete form</p>
+		<input type="hidden" name="id" value="DOVIT 4EREZ JS ">
+		<input type="hidden" name="opcode" value="0">
 		<div class="au-group">
 			<label>Title:</label><br>
 			{% render_field form_d.title class="au-input" %}	
