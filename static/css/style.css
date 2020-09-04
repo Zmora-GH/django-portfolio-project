@@ -149,7 +149,7 @@ textarea {
 	color: #2c3e50;
 	background-color: #ecf0f1  ;
 	margin: 6px 2px;
-	height: 130px;
+	height: auto;
 	width: 310px;
 	border-radius: 4px;
 	border: 2px solid #2980b9;
@@ -157,10 +157,10 @@ textarea {
 
 }
 .card1-title {
-	height: 30px;
+	height: 24px;
 	text-align: center;
 	font-weight: bold;
-	line-height: 30px;
+	line-height: 24px;
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
 }
@@ -169,7 +169,7 @@ textarea {
 .bg5 { background-color: #3498db }
 
 .card1-body {
-	padding: 0 5px;
+	padding: 6px; 
 }
 
 .card-empty {

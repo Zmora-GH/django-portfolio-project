@@ -14,4 +14,3 @@ class BoardPanel(admin.ModelAdmin):
 
 
 admin.site.register(TaskBoard, BoardPanel)
-

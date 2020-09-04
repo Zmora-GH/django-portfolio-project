@@ -1,8 +1,12 @@
-from django.conf import settings
 from django.db import models
+from django.conf import settings
 
 
 class TaskBoard(models.Model):
+	""" Модель доски с задачами. Привязана к пользователю.
+	Поле task_count обновляется при создании/удалении задачи.
+	"""
+
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, 
 		on_delete=models.CASCADE)
 	name = models.CharField(max_length=32)
@@ -20,6 +24,8 @@ class TaskBoard(models.Model):
 
 
 class Task(models.Model):
+	"""Моделю задачи."""
+
 	STAGE_CHOICE = (
 		(1, 'Idea'),
 		(2, 'Task'),
