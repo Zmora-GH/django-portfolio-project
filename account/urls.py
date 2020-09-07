@@ -1,6 +1,8 @@
 from django.contrib.auth import views
 from django.urls import path
+
 from .views import registration_view
+
 
 urlpatterns = [
     path('registration/', registration_view, name='reg_user_url'),

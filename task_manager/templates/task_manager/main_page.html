@@ -8,7 +8,14 @@
 	<div class="container">
 		<div class="main-container">
 			<div class="main-title">
-				<h1>Dis!</h2>			
+				<h1>
+				WELCOME, 
+				{% if  user.is_authenticated %}
+					{{user.username|upper}}!
+				{% else %}	
+					GUEST!
+				{% endif %}
+				</h1>			
 			</div>
 			<div class="main-content">
 				<hr>

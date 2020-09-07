@@ -1,8 +1,11 @@
 from django import forms
+
 from .models import Task, TaskBoard
 
 
 class TaskForm(forms.ModelForm):
+	""" Форма для таски """
+
 	class Meta:
 		prefix = 'task_form'
 		model = Task
@@ -13,6 +16,8 @@ class TaskForm(forms.ModelForm):
 
 
 class BoardForm(forms.ModelForm):
+	""" Форма для доски """
+
 	class Meta:
 		prefix = 'board_form'
 		model = TaskBoard

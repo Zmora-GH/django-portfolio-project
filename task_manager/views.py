@@ -1,12 +1,13 @@
+import json
+
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseBadRequest, HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponseBadRequest, HttpResponseForbidden
 from django.shortcuts import render, redirect
 from django.views.generic import View
 
 from .models import TaskBoard, Task
 from .forms import TaskForm, BoardForm
-
-import json
 
 
 def drop_task(request):
@@ -20,13 +21,14 @@ def drop_task(request):
 	return JsonResponse({'status': 200})
 
 
-class BoardsView(View, LoginRequiredMixin):
-	""" """
+class BoardsView(LoginRequiredMixin, View):
+	""" Вьюха для списка досок"""
 
 	login_url='login_url'
 
 	def get(self, request):
-		""" """
+		""" Рендерит список досок текущего пользователя"""
+		
 		boards = TaskBoard.objects.filter(user=request.user)
 		form =  BoardForm()
 		context = {
@@ -50,14 +52,15 @@ class BoardsView(View, LoginRequiredMixin):
 		return redirect('view_boards')
 
 
-class TasksView(View, LoginRequiredMixin):
-	""" CBV вьюха"""
+class TasksView(LoginRequiredMixin, View):
+	""" Вьюха для тасок на доске """
 
 	login_url='login_url'
 
 	def get(self, request, board_id):
-		"""???"""
-		
+		""" Рендерит таски указаной доски """
+		if TaskBoard.objects.get(id=board_id).user != request.user:
+			return HttpResponseForbidden('<h1>403 Forbidden</h1>')
 		tasks = Task.objects.filter(board=board_id)
 		stages = Task.STAGE_CHOICE
 		form = TaskForm()
@@ -65,15 +68,15 @@ class TasksView(View, LoginRequiredMixin):
 			'tasks': tasks,
 			'stages': stages,
 			'form': form,
-		} 
+		}
 		return render(request, 'task_manager/taskboard.html', context=context)
 
 	def post(self, request, board_id):
 		""" Принимает пост-запрос. В зависимости от opcode,
-		обрабатываютя три вида запросов. 
-		[0] - delete Удаление таска
-		[1] - edit	 Редактирование таска
-		[2] - create Создание таска"""
+		обрабатываютя три операции или выдает 400 Bad Request: 
+		[0] - delete Удаление 
+		[1] - edit	 Редактирование 
+		[2] - create Создание """
 		
 		if request.POST['opcode'] == '2':
 			x_form = TaskForm(request.POST)
@@ -102,4 +105,4 @@ class TasksView(View, LoginRequiredMixin):
 			return redirect('view_tasks', board_id=board_id)
 
 		else:
-			return HttpResponseBadRequest('Oops! This opcode is wrong!')
+			return HttpResponseBadRequest('<h1>Oops! This opcode is wrong!</h1>')

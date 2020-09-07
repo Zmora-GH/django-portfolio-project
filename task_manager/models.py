@@ -24,7 +24,8 @@ class TaskBoard(models.Model):
 
 
 class Task(models.Model):
-	"""Моделю задачи."""
+	"""Модель задачи. Привязана к доске. 
+	Цвета задаются классами bg1-5, которые описываются в css.(?)"""
 
 	STAGE_CHOICE = (
 		(1, 'Idea'),
