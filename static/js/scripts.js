@@ -113,9 +113,7 @@ function backend_drop(card, col) {
 	request.setRequestHeader('HTTP_X_REQUESTED_WITH', 'XMLHttpRequest');
 	request.setRequestHeader('X-CSRFToken', token);
 	request.send(json);
-	console.log(request);
 };
-
 
 task_manipulation();
 

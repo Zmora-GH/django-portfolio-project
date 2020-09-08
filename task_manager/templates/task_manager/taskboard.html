@@ -13,6 +13,7 @@
 		{% for stage in stages %}
 			<div class="colmn js-col" data-column-id="{{stage.0}}">
 				<div class="col-title"> <span> {{stage.1}} </span> </div>
+				<div class="card-empty js-empty hide"> </div>
 				<div class="col-tasks js-inner">
 					{% for task in tasks %}
 						{% if  task.stage == stage.0%}
@@ -23,7 +24,7 @@
 						{% endif %}
 					{% endfor %}
 				</div>
-				<div class="card-empty js-empty hide"> </div>
+				
 			</div>
 		{% endfor %}
 		</div>
