@@ -1,13 +1,11 @@
 import os
-
 from pathlib import Path
 
-from .config import SECRET_KEY
-
-
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-SECRET_KEY = SECRET_KEY
-DEBUG = True
+
+SECRET_KEY = os.environ['SECRET_KEY']
+DEBUG = bool(os.environ['DEBUG_VALUE'])
+
 ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
