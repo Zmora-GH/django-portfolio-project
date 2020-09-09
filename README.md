@@ -2,8 +2,7 @@
 Учебный проект на Django. Небойльшой менаджер задач, вроде Trello или др.
 
 ## Установка
-Список python-пакетов находится в файле **re.txt**;
-После установки задать **SECRET_KEY**;
+Список python-пакетов находится в файле **requirements.txt**;
 
-## Здесь будет ссылка на запущениый проект
-[Ссылка на PythonAnywhere](http://blablabla.bla)
+## Здесь будет ссылка на запущенный проект
+[Ссылка на PythonAnywhere](http://mathmurdull.pythonanywhere.com/)
