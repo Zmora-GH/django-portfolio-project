@@ -1,10 +1,8 @@
-
 *, *::before, *::after {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 }
-
 body {
 	font-family: 'Ubuntu', sans-serif;
 	height: 100vh;
@@ -16,23 +14,15 @@ body {
 	background: linear-gradient(180deg, rgba(44,62,80,1) 33%, rgba(52,73,94,1) 79%, rgba(41,128,185,1) 100%);
 	background-attachment: fixed;
 }
-header {
-	margin-bottom: 5px;
-}
-main {
-	min-height: 80vh;
-}
-footer {
-	margin-top: 15px;
-}
+header { margin-bottom: 5px; }
+main { min-height: 80vh; }
+footer { margin-top: 15px; }
 textarea {
 	height: 100px;
 	width: 280px;
 	resize: none;
 }
-.socials {
-	display: inline-block;
-}
+.socials { display: inline-block; }
 .nav-wrap {
 	font-weight: bold;
 	font-size: 18px;
@@ -56,7 +46,6 @@ textarea {
 	font-weight: bolder;
 	border-bottom: 2px solid #3498db;
 }
-
 .nav-menu-left li{
 	text-decoration: none;
 	list-style: none;
@@ -78,16 +67,13 @@ textarea {
 	background: radial-gradient( rgba(41,128,185,1) 0%, rgba(52,73,94,1) 75%);
 	margin: 4px 0px;
 	padding: 0 10px;
-	padding-left: 40px;
+	margin-left: 40px;
 	text-shadow: 1px 1px 5px  black;
-
 }
-
 .container {
 	max-width: 1280px;
 	margin: 0 auto;
 }
-
 .tasks-container {
 	width: 1300px;
 	margin: 0 auto;
@@ -95,7 +81,6 @@ textarea {
 	border-radius: 10px;
 	padding: 8px 0;
 }
-
 .task-toolbar {
 	margin: 5px auto;
 	width: 80%;
@@ -104,7 +89,6 @@ textarea {
 	border: 2px solid #2980b9;
 	border-radius: 5px;
 }
-
 .tb-btn, .btn {
 	color: #2c3e50;
 	font-weight: bold;
@@ -121,8 +105,6 @@ textarea {
 	color: #3498db;
 }
 .tb-btn:active { background-color: #34495e; }
-
-
 .tasks {
 	display: flex;
 	justify-content: space-around;
@@ -130,7 +112,6 @@ textarea {
 	margin: 10px 0;
 	padding: 0 10px;
 }
-
 .colmn {
 	width: auto;
 	height: 100%;
@@ -154,7 +135,6 @@ textarea {
 	border-radius: 4px;
 	border: 2px solid #2980b9;
 	cursor: grab;
-
 }
 .card1-title {
 	height: 24px;
@@ -167,11 +147,7 @@ textarea {
 .bg1 { background-color: #e74c3c; } .bg2 { background-color: #2ecc71; }
 .bg3 { background-color: #f1c40f; } .bg4 { background-color: #9b59b6; }
 .bg5 { background-color: #3498db }
-
-.card1-body {
-	padding: 6px; 
-}
-
+.card1-body { padding: 6px; }
 .card-empty {
 	margin: 6px auto;
 	height: 50px;
@@ -181,18 +157,11 @@ textarea {
 	padding: 10px 10px;
 	border-radius: 6px;
 }
-
-
 .footer-wrap {
 	width: 100%;
 	padding: 5px 5px;
 	text-align: center;
 }
-
-
-
-
-
 .form-wrap, .form-wrap-n, .form-wrap-e, .form-wrap-d {
 	position: absolute;
 	z-index: 5;
@@ -202,10 +171,7 @@ textarea {
 	bottom: -80px;
 	background-color: rgba(0,0,0,0.5);
 }
-
-.task-form {
-	position: relative;
-}
+.task-form { position: relative; }
 form {
 	display: block;
 	max-width: 400px;
@@ -216,7 +182,6 @@ form {
 	color: #2c3e50;
 	font-weight: bold;
 }
-
 .cf-input {
 	font-family: 'Ubuntu', sans-serif;
 	line-height: 28px;
@@ -239,65 +204,18 @@ form {
 	cursor: pointer;
 	padding: 2px 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-.hide {
-	display: none;
-}
-
-.hovered {
-	background-color: rgba(125,150,180,0.3);
-}
-
+.hide { display: none; }
+.hovered { background-color: rgba(125,150,180,0.3);}
 .disabled {
     opacity: 0.1;
     cursor: not-allowed;
 }
-.selected {
-	border: 3px double  #e67e22;
-}
-
-
-
-
-
-
-
-
-
-
-.main-container {
-	
-}
+.selected { border: 3px double  #e67e22; }
 .main-title {
 	text-align: center;
 	margin: 30px 0;
 }
-.main-content {
-	margin: 20px 200px;
-}
-
-
-
-
-
-
-
-
-.boards-container {
-
-}
+.main-content { margin: 20px 200px; }
 .boards-title {
 	margin: 30px 0;
 	text-align: center;
@@ -305,7 +223,6 @@ form {
 .tasks-table {
 	margin: 30px auto;
 	font-size: 20px;
-
 }
 .tasks-table td,th {
 	border-bottom: 2px solid #3498db;
@@ -313,7 +230,6 @@ form {
 	width: auto;
 	padding-right: 40px;
 	padding-left: 10px;
-
 }
 .tr-n a{
 	font-weight: bold;
@@ -325,7 +241,6 @@ form {
 	background-color: rgba(255,255,255,0.1);
 	cursor: pointer;
 }
-
 .au-form {
 	margin: 0 auto;
 	color: #ecf0f1;
@@ -333,7 +248,6 @@ form {
 	height: auto;
 	width: auto;
 	padding: 25px 10px;
-
 }
 .au-group {
 	text-align: center;
@@ -351,4 +265,3 @@ form {
 	border-bottom: 2px solid #3498db;
 	margin: 0 auto;
 }
-

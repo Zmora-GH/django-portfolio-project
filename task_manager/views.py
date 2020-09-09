@@ -2,7 +2,9 @@ import json
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, JsonResponse
-from django.http import HttpResponseBadRequest, HttpResponseForbidden
+from django.http import HttpResponseBadRequest
+from django.http import HttpResponseForbidden
+from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django.views.generic import View
 
@@ -14,11 +16,13 @@ def drop_task(request):
 	"""Вьюшка для изменения категории тасков при 
 	перетаскивании. Принимает Ajax пост-запрос из js."""
 
-	data = json.loads(request.body)
-	task = Task.objects.get(id=data['id'])
-	task.stage = data['stage']
-	task.save()
-	return JsonResponse({'status': 200})
+	if request.method == 'POST':
+		data = json.loads(request.body)
+		task = Task.objects.get(id=data['id'])
+		task.stage = data['stage']
+		task.save()
+		return JsonResponse({'status': 200})
+	return JsonResponse()
 
 
 class BoardsView(LoginRequiredMixin, View):
@@ -59,17 +63,21 @@ class TasksView(LoginRequiredMixin, View):
 
 	def get(self, request, board_id):
 		""" Рендерит таски указаной доски """
-		if TaskBoard.objects.get(id=board_id).user != request.user:
-			return HttpResponseForbidden('<h1>403 Forbidden</h1>')
-		tasks = Task.objects.filter(board=board_id)
-		stages = Task.STAGE_CHOICE
-		form = TaskForm()
-		context = {
-			'tasks': tasks,
-			'stages': stages,
-			'form': form,
-		}
-		return render(request, 'task_manager/taskboard.html', context=context)
+
+		try:
+			if TaskBoard.objects.get(id=board_id).user != request.user:
+				return HttpResponseForbidden('<h1>403 Forbidden</h1>')
+			tasks = Task.objects.filter(board=board_id)
+			stages = Task.STAGE_CHOICE
+			form = TaskForm()
+			context = {
+				'tasks': tasks,
+				'stages': stages,
+				'form': form,
+			}
+			return render(request, 'task_manager/taskboard.html', context=context)
+		except TaskBoard.DoesNotExist:
+			return HttpResponseNotFound('<h1>404 Not Found</h1>')
 
 	def post(self, request, board_id):
 		""" Принимает пост-запрос. В зависимости от opcode,

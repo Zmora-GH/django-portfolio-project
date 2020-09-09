@@ -8,8 +8,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
 	<link rel="stylesheet" href="{% static '/css/style.css' %}">
 	<title> 
-		{% block title %} 
-		{% endblock title %}
+		{% block title %}Task Manager{% endblock title %}
 	</title>
 </head>
 <body>
@@ -35,32 +34,26 @@
 			</div>
 		</div>
 	</header>
-
 	<main>
-		{% block main %}
-		{% endblock main %}
+		{% block main %}{% endblock main %}
 	</main>
-
 	<footer>
 		<div class="container">
 			<div class="footer-wrap">
 				<p>by Zmora</p>
 				<div class="footer-social">
 					<div class="socials">
-						<a href=""> <img src="{% static '/img/tg.svg' %}" height="30" onclick="nonsoc()"> </a>
-						<a href=""> <img src="{% static '/img/vk.svg' %}" height="30" onclick="nonsoc()"> </a>
-						<a href=""> <img src="{% static '/img/tw.svg' %}" height="30" onclick="nonsoc()"> </a>
-						<a href=""> <img src="{% static '/img/gh.svg' %}" height="30" onclick="nonsoc()"> </a>
+						<a href=""><img src="{%static '/img/tg.png'%}" height="30" onclick="nonsoc()"></a>
+						<a href=""><img src="{%static '/img/vk.png'%}" height="30" onclick="nonsoc()"></a>
+						<a href=""><img src="{%static '/img/tw.png'%}" height="30" onclick="nonsoc()"></a>
+						<a href=""><img src="{%static '/img/gh.png'%}" height="30" onclick="nonsoc()"></a>
 					</div>
 				</div>
-					<small> 
-						Some small copyright text :)
-					</small>
+					<small>Some small copyright text :)</small>
 			</div>
 		</div>
 	</footer>
-	{% block scripts %}	    
-	{% endblock scripts %}
+	{% block scripts %}{% endblock scripts %}
 	<script src="{% static '/js/scripts.js' %}" defer></script>
 	<script type="text/javascript">
 		function nonsoc() { alert('Social media is intentionally not added!')}

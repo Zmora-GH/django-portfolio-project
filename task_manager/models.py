@@ -4,8 +4,7 @@ from django.conf import settings
 
 class TaskBoard(models.Model):
 	""" Модель доски с задачами. Привязана к пользователю.
-	Поле task_count обновляется при создании/удалении задачи.
-	"""
+	Поле task_count обновляется при создании/удалении задачи."""
 
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, 
 		on_delete=models.CASCADE)
@@ -28,16 +27,14 @@ class Task(models.Model):
 	Цвета задаются классами bg1-5, которые описываются в css.(?)"""
 
 	STAGE_CHOICE = (
-		(1, 'Idea'),
-		(2, 'Task'),
-		(3, 'In Progress'),
-		(4, 'Comleted'))
+		(1, 'Idea'), (2, 'Task'),
+		(3, 'In Progress'), (4, 'Comleted'),
+	)
 	COLOR_CHOICE = (
-		('bg1', 'Red'),
-		('bg2', 'Green'),
-		('bg3', 'Orange'),
-		('bg4', 'Lilac'),
-		('bg5', 'Blue'),)
+		('bg1', 'Red'), ('bg2', 'Green'),
+		('bg3', 'Orange'), ('bg4', 'Lilac'),
+		('bg5', 'Blue'),
+	)
 	title = models.CharField(max_length=32)
 	body = models.CharField(max_length=185)
 	stage = models.IntegerField(choices=STAGE_CHOICE, default=1)

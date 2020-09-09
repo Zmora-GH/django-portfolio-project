@@ -1,8 +1,6 @@
 {% extends "index.html" %}
 
-{% block title %}
-
-{% endblock title %}
+{% block title %}Tasks{% endblock title %}
 
 {% block main %}
 	{% include 'task_manager/includes/task_toolbar.html' %}
@@ -24,13 +22,10 @@
 						{% endif %}
 					{% endfor %}
 				</div>
-				
 			</div>
 		{% endfor %}
 		</div>
 	</div>
 {% endblock main %}
 
-{% block scripts %}
-    
-{% endblock scripts %}
+{% block scripts %}{% endblock scripts %}
